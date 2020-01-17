@@ -1,0 +1,2 @@
+include ':app', ':MDpersistence'
+rootProject.name='My Application'
