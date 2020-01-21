@@ -8,6 +8,9 @@ import androidx.test.ext.junit.runners.AndroidJUnit4;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import io.realm.Realm;
+import mosquito.digital.template.mdpersistence.Models.NoPrimaryKeyModel;
+
 import static org.junit.Assert.*;
 
 /**
@@ -22,6 +25,10 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
 
+        Realm.init(appContext);
+        PersistenceService persistenceService = new PersistenceService();
+        persistenceService.SaveItem(new NoPrimaryKeyModel());
         assertEquals("mosquito.digital.template.mdpersistence.test", appContext.getPackageName());
+
     }
 }
