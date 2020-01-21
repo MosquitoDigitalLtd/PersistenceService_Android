@@ -43,7 +43,7 @@ Jump the version numbers
 #Step Three
 Run this on the commnad line (MAC, drop w from gradle for windows)
 ```ruby
-./gradlew clean build bintrayUpload -PbintrayUser=benjaminpollard -PbintrayKey=72e1948ace098e9b75396a3d2cb438823cbff889 -PdryRun=false
+./gradlew clean build bintrayUpload -PbintrayUser=mosquito-digital -PbintrayKey=8ac5e9504ca4ab4a5bd56a057dbb20321fbf0d6c -PdryRun=false
 ```
 
 This will push the project to the https://bintray.com/ Account for publising to jCenter(Our Libaray Hosting)
