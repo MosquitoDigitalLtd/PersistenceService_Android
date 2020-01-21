@@ -8,8 +8,8 @@ android {
     defaultConfig {
         minSdkVersion 19
         targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName "0.2.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
@@ -42,7 +42,7 @@ publish {
 
     def groupProjectID = 'mosquito.digital.template.Persistence'
     def artifactProjectID = 'MDPersistence'
-    def publishVersionID = '0.1.0'
+    def publishVersionID = '0.2.0'
 
     userOrg = 'benjaminpollard'
     repoName = 'MDPersistants'
