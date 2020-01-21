@@ -41,7 +41,7 @@ apply plugin: 'com.android.library'
 publish {
 
     def groupProjectID = 'mosquito.digital.Persistence'
-    def artifactProjectID = 'MDPersistence'
+    def artifactProjectID = 'MDPersistences'
     def publishVersionID = '0.2.0'
     def user='mosquito-digital'
     def apiKey='8ac5e9504ca4ab4a5bd56a057dbb20321fbf0d6c'
