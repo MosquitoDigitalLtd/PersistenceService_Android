@@ -4,7 +4,13 @@
 ## Installation
 
 ```ruby
-    implementation 'mosquito.digital.template.Persistence:MDPersistence:0.2.0'
+//Add to App Module at the bottom
+    apply plugin: 'realm-android'
+```
+
+```ruby
+//Add to App Module
+    implementation 'mosquito.digital.Persistence:MDPersistences:0.2.0'
 ```
 ```ruby
  allprojects {
@@ -12,7 +18,23 @@
         jcenter()
     }
  }
+ dependencies {
+        classpath "io.realm:realm-gradle-plugin:4.0.0"
+}
 ```
+
+
+Then Add to Your Application Class
+```java
+
+        Realm.init(this);
+        RealmConfiguration config = new RealmConfiguration.Builder()
+                .schemaVersion(1) // Must be bumped when the schema changes
+                .build();
+
+        Realm.setDefaultConfiguration(config);
+```
+
 ## About
 
 This provides an easy to use wrapper around realm to help avoid having realm dependancy leaking in to lots of areas of your App. Making replacing the database implmentsion easier if the need arises and giving convient helper methods.
