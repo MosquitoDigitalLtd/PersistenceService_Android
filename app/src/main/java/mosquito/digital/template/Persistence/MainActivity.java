@@ -12,6 +12,9 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import io.realm.Realm;
+import mosquito.digital.template.mdpersistence.PersistenceService;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -29,6 +32,13 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+        Realm.init(this);
+TestObject n = new TestObject();
+n.n = "dsf";
+        PersistenceService m = new PersistenceService();
+        m.SaveItem(n);
+
+
     }
 
     @Override

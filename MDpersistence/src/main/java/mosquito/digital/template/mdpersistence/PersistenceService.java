@@ -9,11 +9,11 @@ import io.realm.RealmQuery;
 
 public class PersistenceService implements IPersistenceService {
 
-    private final Realm realm;
+    private Realm realm;
 
-    public PersistenceService()
+    public PersistenceService(Realm realm)
     {
-        realm = Realm.getDefaultInstance();
+        this.realm = realm;
     }
 
     public <T extends RealmObject> T MakeObjectManaged(T item)

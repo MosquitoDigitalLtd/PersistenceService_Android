@@ -18,14 +18,14 @@ public class BaseTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
         Realm.init(appContext);
-        return new PersistenceService();
+        return new PersistenceService(Realm.getDefaultInstance());
 
     }
 
     @After
     public void CleanUp()
     {
-        new PersistenceService().DropDatabase();
+        new PersistenceService(Realm.getDefaultInstance()).DropDatabase();
     }
 
 }
