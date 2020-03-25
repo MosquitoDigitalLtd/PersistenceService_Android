@@ -1,4 +1,4 @@
-package com.mosquito.persistenceservice;
+package com.mosquito.libs;
 
 import io.realm.RealmObject;
 

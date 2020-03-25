@@ -1,4 +1,4 @@
-package com.mosquito.persistenceservice;
+package com.mosquito.libs;
 
 import android.content.Context;
 

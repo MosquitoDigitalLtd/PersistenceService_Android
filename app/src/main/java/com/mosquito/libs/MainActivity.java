@@ -1,4 +1,4 @@
-package com.mosquito.persistenceservice;
+package com.mosquito.libs;
 
 import android.os.Bundle;
 
@@ -13,8 +13,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import io.realm.Realm;
-import mosquito.digital.template.Persistence.R;
-import mosquito.digital.template.PersistenceService.PersistenceService;
+import com.mosquito.persistenceservice.R;
+import com.mosquito.persistenceservice.PersistenceService;
 
 public class MainActivity extends AppCompatActivity {
 
