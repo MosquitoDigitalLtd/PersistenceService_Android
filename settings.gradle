@@ -1,2 +1,2 @@
-include ':app', ':MDpersistence'
-rootProject.name='My Application'
+include ':app', ':PersistenceService'
+rootProject.name='PersistenceServiceLib'

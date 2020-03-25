@@ -1,0 +1,52 @@
+apply plugin: 'com.android.library'
+apply plugin: 'realm-android'
+apply plugin: 'com.novoda.bintray-release' // must be applied after your artifact generating plugin (eg. java / com.android.library)
+apply plugin: 'maven-publish'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.0"
+
+    defaultConfig {
+        minSdkVersion 19
+        targetSdkVersion 29
+        versionCode 2
+        versionName "0.2.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+}
+
+publish {
+    def groupProjectID = 'com.mosquito.persistenceservice'
+    def artifactProjectID = 'PersistenceService'
+    def publishVersionID = '1.0.0'
+    def user='mosquito-digital'
+    def apiKey='8ac5e9504ca4ab4a5bd56a057dbb20321fbf0d6c'
+
+    userOrg = user
+    repoName = 'PersistenceService'
+    groupId = groupProjectID
+    artifactId = artifactProjectID
+    publishVersion = publishVersionID
+    desc = 'PersistenceService'
+    website = 'https://github.com/MosquitoDigitalLtd/DatabaseService_Android'
+
+}
