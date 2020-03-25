@@ -10,8 +10,8 @@ android {
     defaultConfig {
         minSdkVersion 19
         targetSdkVersion 29
-        versionCode 101
-        versionName "1.0.1"
+        versionCode 102
+        versionName "1.0.2"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
@@ -41,7 +41,7 @@ publish {
     repoName = 'PersistenceService'
     groupId = 'com.mosquito.persistenceservice'
     artifactId = 'PersistenceService'
-    publishVersion = '1.0.0'
+    publishVersion = '1.0.2'
     desc = 'PersistenceService'
     website = 'https://github.com/MosquitoDigitalLtd/DatabaseService_Android'
 }
