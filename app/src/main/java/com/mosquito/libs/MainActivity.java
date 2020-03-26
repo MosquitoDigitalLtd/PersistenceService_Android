@@ -35,11 +35,11 @@ public class MainActivity extends AppCompatActivity {
 
         Realm.init(this);
 
-        TestObject testObject = new TestObject();
-        testObject.n = "dsf";
-
-        PersistenceService persistenceService = new PersistenceService(Realm.getDefaultInstance());
-        persistenceService.saveItem(testObject);
+//        TestObject testObject = new TestObject();
+//        testObject.n = "dsf";
+//
+//        PersistenceService persistenceService = new PersistenceService(Realm.getDefaultInstance());
+//        persistenceService.saveItem(testObject);
     }
 
     @Override
