@@ -13,21 +13,23 @@ import static org.junit.Assert.assertEquals;
 
 @RunWith(AndroidJUnit4.class)
 public class CanGetItemsForValuePair extends BaseTest {
+
     @Test
     public void WithModelThatHasPrimaryKey() {
         final String text1 = "asd";
         String id = "dfsfff";
 
         final PersistenceService persistenceService = getDatabase();
+
         final PrimaryKeyModel model = new PrimaryKeyModel();
         model.text = text1;
         model.id = id;
-        persistenceService.SaveItem( new PrimaryKeyModel());
 
-        persistenceService.SaveItem(model);
+        persistenceService.saveItem(new PrimaryKeyModel());
 
-        assertEquals(text1,  persistenceService.GetItemForKeyValuePair(PrimaryKeyModel.class,"id",id).text);
+        persistenceService.saveItem(model);
 
+        assertEquals(text1,  persistenceService.getItemForKeyValuePair(PrimaryKeyModel.class,"id", id).text);
     }
 
     @Test
@@ -37,11 +39,12 @@ public class CanGetItemsForValuePair extends BaseTest {
         final PersistenceService persistenceService = getDatabase();
         final NoPrimaryKeyModel model = new NoPrimaryKeyModel();
         model.text = text1;
-        persistenceService.SaveItem( new NoPrimaryKeyModel());
 
-        persistenceService.SaveItem(model);
+        persistenceService.saveItem( new NoPrimaryKeyModel());
 
-        assertEquals(text1,  persistenceService.GetItemForKeyValuePair(NoPrimaryKeyModel.class,"text",text1).text);
+        persistenceService.saveItem(model);
+
+        assertEquals(text1, persistenceService.getItemForKeyValuePair(NoPrimaryKeyModel.class,"text", text1).text);
 
     }
 }

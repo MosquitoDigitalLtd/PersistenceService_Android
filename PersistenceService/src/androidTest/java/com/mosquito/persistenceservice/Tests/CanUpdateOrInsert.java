@@ -22,10 +22,9 @@ public class CanUpdateOrInsert extends BaseTest {
         NoPrimaryKeyModel model = new NoPrimaryKeyModel();
 
         model.text = text1;
-        persistenceService.UpdateOrInsertItem(model);
+        persistenceService.insertOrUpdateItem(model);
 
-        assertEquals(text1,  persistenceService.GetItem(NoPrimaryKeyModel.class).text);
-
+        assertEquals(text1, persistenceService.getItem(NoPrimaryKeyModel.class).text);
     }
 
     @Test
@@ -37,10 +36,10 @@ public class CanUpdateOrInsert extends BaseTest {
 
         model.text = text1;
         model.id = "sd";
-        persistenceService.UpdateOrInsertItem(model);
 
-        assertEquals(text1,  persistenceService.GetItem(PrimaryKeyModel.class).text);
+        persistenceService.insertOrUpdateItem(model);
 
+        assertEquals(text1, persistenceService.getItem(PrimaryKeyModel.class).text);
     }
 
     @Test
@@ -53,15 +52,14 @@ public class CanUpdateOrInsert extends BaseTest {
 
         model.text = text1;
         model.id = "sd";
-        persistenceService.UpdateOrInsertItem(model);
+        persistenceService.insertOrUpdateItem(model);
 
-        assertEquals(text1,  persistenceService.GetItem(PrimaryKeyModel.class).text);
+        assertEquals(text1,  persistenceService.getItem(PrimaryKeyModel.class).text);
 
-        PrimaryKeyModel modelunmanaged = persistenceService.GetUnmanagedObject(PrimaryKeyModel.class);
+        PrimaryKeyModel modelunmanaged = persistenceService.getUnmanagedItem(PrimaryKeyModel.class);
         modelunmanaged.text = text2;
-        persistenceService.UpdateOrInsertItem(modelunmanaged);
+        persistenceService.insertOrUpdateItem(modelunmanaged);
 
-        assertEquals(text2,  persistenceService.GetItem(PrimaryKeyModel.class).text);
-
+        assertEquals(text2,  persistenceService.getItem(PrimaryKeyModel.class).text);
     }
 }

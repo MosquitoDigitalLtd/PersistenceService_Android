@@ -14,6 +14,7 @@ import static org.junit.Assert.assertTrue;
 
 @RunWith(AndroidJUnit4.class)
 public class CanRemoveObjects extends BaseTest {
+
     @Test
     public void WithModelThatHasPrimaryKey() {
         String text1 = "asd";
@@ -22,13 +23,14 @@ public class CanRemoveObjects extends BaseTest {
         NoPrimaryKeyModel model = new NoPrimaryKeyModel();
 
         model.text = text1;
-        persistenceService.SaveItem(model);
-        assertEquals(text1,  persistenceService.GetItem(NoPrimaryKeyModel.class).text);
 
-        persistenceService.RemoveItem(persistenceService.GetItem(NoPrimaryKeyModel.class));
+        persistenceService.saveItem(model);
 
-        assertTrue(persistenceService.GetItems(NoPrimaryKeyModel.class).isEmpty());
+        assertEquals(text1, persistenceService.getItem(NoPrimaryKeyModel.class).text);
 
+        persistenceService.deleteItem(persistenceService.getItem(NoPrimaryKeyModel.class));
+
+        assertTrue(persistenceService.getItemList(NoPrimaryKeyModel.class).isEmpty());
     }
 
     @Test
@@ -39,13 +41,14 @@ public class CanRemoveObjects extends BaseTest {
         PrimaryKeyModel model = new PrimaryKeyModel();
 
         model.text = text1;
-        persistenceService.SaveItem(model);
 
-        assertEquals(text1,  persistenceService.GetItem(PrimaryKeyModel.class).text);
+        persistenceService.saveItem(model);
 
-        persistenceService.RemoveItem(persistenceService.GetItem(PrimaryKeyModel.class));
+        assertEquals(text1, persistenceService.getItem(PrimaryKeyModel.class).text);
 
-        assertTrue(persistenceService.GetItems(PrimaryKeyModel.class).isEmpty());
+        persistenceService.deleteItem(persistenceService.getItem(PrimaryKeyModel.class));
+
+        assertTrue(persistenceService.getItemList(PrimaryKeyModel.class).isEmpty());
 
     }
 
@@ -58,13 +61,13 @@ public class CanRemoveObjects extends BaseTest {
         NoPrimaryKeyModel model = new NoPrimaryKeyModel();
 
         model.text = text1;
-        persistenceService.SaveItem(model);
-        persistenceService.SaveItem(new NoPrimaryKeyModel());
-        persistenceService.SaveItem(new NoPrimaryKeyModel());
+        persistenceService.saveItem(model);
+        persistenceService.saveItem(new NoPrimaryKeyModel());
+        persistenceService.saveItem(new NoPrimaryKeyModel());
 
-        persistenceService.Remove(NoPrimaryKeyModel.class);
+        persistenceService.deleteAllByType(NoPrimaryKeyModel.class);
 
-        assertTrue(persistenceService.GetItems(NoPrimaryKeyModel.class).isEmpty());
+        assertTrue(persistenceService.getItemList(NoPrimaryKeyModel.class).isEmpty());
 
     }
 }

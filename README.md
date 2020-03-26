@@ -14,7 +14,7 @@ Add to `build.gradle` (app module):
 ```
 dependencies {
 	...
-	implementation 'com.mosquito.persistenceservice:PersistenceService:1.0.0'
+	implementation 'com.mosquito.persistenceservice:persistence-service:1.0.4'
 }
 ```
 
@@ -58,6 +58,7 @@ Benjamin Pollard, for Mosquito Digital
 PersistenceService is available under the MIT license. See the LICENSE file for more info.
 
 ## Publishing Updates
+
 To publish updates follow these steps.
 
 ###### Step One

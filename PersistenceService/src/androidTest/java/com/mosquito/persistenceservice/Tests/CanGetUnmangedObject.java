@@ -18,11 +18,12 @@ public class CanGetUnmangedObject extends BaseTest {
         String text1 = "asd";
 
         final PersistenceService persistenceService = getDatabase();
+
         NoPrimaryKeyModel model = new NoPrimaryKeyModel();
         model.text = text1;
-        persistenceService.SaveItem(model);
-        assertEquals(text1,  persistenceService.GetItem(NoPrimaryKeyModel.class).text);
+        persistenceService.saveItem(model);
 
+        assertEquals(text1, persistenceService.getItem(NoPrimaryKeyModel.class).text);
     }
 
     @Test
@@ -30,10 +31,13 @@ public class CanGetUnmangedObject extends BaseTest {
         String text1 = "asd";
 
         final PersistenceService persistenceService = getDatabase();
+
         PrimaryKeyModel model = new PrimaryKeyModel();
         model.text = text1;
-        persistenceService.SaveItem(model);
-        assertEquals(text1,  persistenceService.GetItem(PrimaryKeyModel.class).text);
+
+        persistenceService.saveItem(model);
+
+        assertEquals(text1, persistenceService.getItem(PrimaryKeyModel.class).text);
 
     }
 }

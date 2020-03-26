@@ -13,7 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import io.realm.Realm;
-//import com.mosquito.persistenceservice.PersistenceService;
+import com.mosquito.persistenceservice.PersistenceService;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -34,10 +34,12 @@ public class MainActivity extends AppCompatActivity {
         });
 
         Realm.init(this);
-        TestObject n = new TestObject();
-        n.n = "dsf";
-//        PersistenceService m = new PersistenceService();
-//        m.SaveItem(n);
+
+//        TestObject testObject = new TestObject();
+//        testObject.n = "dsf";
+//
+//        PersistenceService persistenceService = new PersistenceService(Realm.getDefaultInstance());
+//        persistenceService.saveItem(testObject);
     }
 
     @Override
