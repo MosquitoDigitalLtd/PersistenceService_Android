@@ -22,6 +22,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
 
-        assertEquals("mosquito.digital.template.Persistence", appContext.getPackageName());
+        assertEquals("com.mosquito.libs", appContext.getPackageName());
     }
 }

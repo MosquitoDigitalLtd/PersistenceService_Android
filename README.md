@@ -1,92 +1,118 @@
 # PersistenceService
 
+This library is created to help with performing any transactions in [Realm](https://realm.io/docs/java/latest/) database. It includes wrappers for basic CRUD operations and some helper functions. For full list of available functions see `IPersistenceService`.
 
-## Installation
+## Usage
 
-Add to `build.gradle` (app module):
+Add Realm plugin and this library to `build.gradle` (app module):
 
 ```
 apply plugin: 'realm-android'
-```
 
-Add to `build.gradle` (app module):
+...
 
-```
 dependencies {
 	...
-	implementation 'com.mosquito.persistenceservice:persistence-service:1.0.4'
+	implementation 'com.mosquito.persistenceservice:persistence-service:1.0.6'
 }
 ```
 
-Add to `build.gradle` (root):
+Add Realm to `build.gradle` (root):
 
 ```
-allprojects {
-	repositories {
-		...
-		jcenter()
-		maven { url 'https://jitpack.io' }
-	}
-}
- 
 dependencies {
 	classpath "io.realm:realm-gradle-plugin:4.0.0"
 }
 ```
 
-Then Add to Your Application Class
+Initialize Realm in your Application class:
 
 ```
-        Realm.init(this);
-        RealmConfiguration config = new RealmConfiguration.Builder()
-                .schemaVersion(1) // Must be bumped when the schema changes
-                .build();
+Realm.init(this);
 
-        Realm.setDefaultConfiguration(config);
+RealmConfiguration config = new RealmConfiguration.Builder().schemaVersion(1).build();
+
+Realm.setDefaultConfiguration(config);
 ```
 
-## About
+And finally initialize PersistenceService class:
 
-This provides an easy to use wrapper around realm to help avoid having realm dependancy leaking in to lots of areas of your App. Making replacing the database implmentsion easier if the need arises and giving convient helper methods.
+```
+PersistenceService persistenceService = new PersistenceService(Realm.getDefaultInstance());
+```
 
-## Author
+To make basic operations make a call like this:
 
-Benjamin Pollard, for Mosquito Digital
+```
+persistenceService.saveItem(new YourModel());
+```
 
-## License
+And for update:
 
-PersistenceService is available under the MIT license. See the LICENSE file for more info.
+```
+persistenceService.updateItem(new DatabaseUpdate() {
+	@Override
+	public void update() {
+		// Update your model here. 
+		// This will open write transaction in database and close it after applying your changes
+	}
+});
+```
 
-## Publishing Updates
+## How library had been created
+
+To create library like this you can use [How to publis and distribute your Android library tutorial](https://medium.com/swlh/how-to-publish-and-distribute-your-android-library-ce845c68c7f7) or [How to publish Android library on Bitray tutorial](http://blogs.quovantis.com/how-to-publish-android-library-on-bintrayjcenter/).
+
+There is also [bintray-release](https://github.com/novoda/bintray-release) library which can be used to make releases a bit easier.
+
+## Publishing updates
 
 To publish updates follow these steps.
 
-###### Step One
-Make what ever code changes are needed
+### Step one
 
-###### Step Two
-Jump the version numbers 
+Bump the version numbers in `build.gradle` (`PersistenceService` module):
 
 ```
-  versionName "0.2.0"
+defaultConfig {
+	...
+	versionCode 106
+	versionName "1.0.6"
+}
 ```
 
 ```
-  def publishVersionID = '0.2.0'
+publish {
+	...
+	publishVersion = '1.0.6'
+}
+
 ```
 
-###### Step Three
-Run this on the commnad line (MAC, drop w from gradle for windows)
+### Step two
+
+In terminal, navigate to library root directory and run:
 
 ```
 ./gradlew clean build bintrayUpload -PbintrayUser=mosquito-digital -PbintrayKey=8ac5e9504ca4ab4a5bd56a057dbb20321fbf0d6c -PdryRun=false
 ```
 
-This will push the project to the https://bintray.com/ Account for publising to jCenter(Our Libaray Hosting)
+This will push the project to the [Bintray](https://bintray.com/).
 
-###### Step Four
+### Step three
 
-Login too https://bintray.com/ with account details username: Mosquito-Digital and password: 6WFT4t@whP8xb4D
-and inside your project there is a 'Send to jCenter' Button , press that in the next 2 hours you will be able to use the new code in your project
+Verify if the new release is listed on Bintray dashboard.
 
+Use below credentials to access dashboard:
 
+```
+username: Mosquito-Digital
+password: 6WFT4t@whP8xb4D
+```
+
+**Note:**
+If you are using this Readme to create new library, keep in mind on the first release you will also need to press `Send to jCenter` button which (as of March 2020) is only visible on the 'Old view' so you'll need to press `Go to Old Look` button on the top of the dashboard first. After that it may take up to 2 hours for the library to be available for including to your project.
+
+## License
+
+PersistenceService is available under the MIT license. See the LICENSE file for more info.
